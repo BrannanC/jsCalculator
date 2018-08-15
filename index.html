@@ -1,0 +1,86 @@
+<head>
+    <style>
+        *{
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  background-color: gray;
+  width: 230px;
+  border: 1px solid black;
+  height: 200px;
+}
+
+table {
+  height: 170px;
+}
+
+.button{
+  width: 50px;
+  margin: 2px;
+  font-size: 40px;
+}
+
+.textbar {
+  width: 207px;
+  margin: 5px;
+  front-size: 25px;
+  padding: 3px;
+  text-align: right;
+}
+    </style>
+</head>
+<body>
+  <div class="main">
+    <form class="form">
+      <input class="textbar" id="textbar" disabled>
+    </form>
+    <table>
+      <tr>
+        <td><input class="button" type="button" value="7" onclick="displayNum('7')"></td>
+        <td><input class="button" type="button" value="8" onclick="displayNum('8')"></td>
+        <td><input class="button" type="button" value="9" onclick="displayNum('9')"></td>
+        <td><input class="button" type="button" value="X" onclick="displayNum('*')"></td>
+      </tr>
+      <tr>
+        <td><input class="button" type="button" value="4" onclick="displayNum('4')"></td>
+        <td><input class="button" type="button" value="5" onclick="displayNum('5')"></td>
+        <td><input class="button" type="button" value="6" onclick="displayNum('6')"></td>
+        <td><input class="button" type="button" value="-" onclick="displayNum('-')"></td>
+      </tr>
+      <tr>
+        <td><input class="button" type="button" value="1" onclick="displayNum('1')"></td>
+        <td><input class="button" type="button" value="2" onclick="displayNum('2')"></td>
+        <td><input class="button" type="button" value="3" onclick="displayNum('3')"></td>
+        <td><input class="button" type="button" value="+" onclick="displayNum('+')"></td>
+      </tr>
+      <tr>
+        <td><input class="button" type="button" value="0" onclick="displayNum('0')"></td>
+        <td><input class="button" type="button" value="C" onclick="displayNum('c')"></td>
+        <td><input class="button" type="button" value="/" onclick="displayNum('/')"></td>
+        <td><input class="button" type="button" value="=" onclick="equals()"></td>
+      </tr>
+    </table>
+  </div>
+  <script>
+  let didEqual = false;
+const displayBox = document.getElementById("textbar");
+
+
+function displayNum(num)
+{console.log(num);
+ if(didEqual){displayBox.value = ''; didEqual = false;}
+  displayBox.value += num;
+  if(num === "c"){displayBox.value = '';}
+}
+
+function equals(){
+    if(displayBox.value.slice(-2) === "/0"){
+        displayBox.value = "stop that";
+        }
+  displayBox.value = eval(displayBox.value);
+  didEqual = true;
+}
+  </script>
+</body>
